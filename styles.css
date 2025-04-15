@@ -1,0 +1,256 @@
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+}
+
+h1 {
+    text-align: center;
+    color: #e0e0e0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.parking-map {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 2px;
+    background-color: #2d2d2d;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.parking-zone {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #333;
+}
+
+.street {
+    background-color: #404040;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.street.horizontal {
+    height: 0px;
+    grid-column: span 20;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.street.vertical {
+    width: 30px;
+    grid-row: span 4;
+}
+
+.street.traffic-low { background-color: rgba(76, 175, 80, 0.2); }
+.street.traffic-medium { background-color: rgba(255, 193, 7, 0.2); }
+.street.traffic-high { background-color: rgba(244, 67, 54, 0.2); }
+
+.gate {
+    background-color: #1976D2;
+    padding: 8px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.parking-spot {
+    width: 40px;
+    height: 60px;
+    border: 2px solid #4a4a4a;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.parking-spot.disabled {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="50" fill="%23e0e0e0">♿</text></svg>');
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: #1976D2;
+    background-color: #2d2d2d;
+}
+
+.spot-number {
+    font-size: 10px;
+    position: absolute;
+    bottom: 2px;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.parking-spot.occupied {
+    background-color: rgba(244, 67, 54, 0.3);
+    border-color: #d32f2f;
+    box-shadow: inset 0 0 8px rgba(244, 67, 54, 0.2);
+}
+
+.car {
+    width: 35px;
+    height: 55px;
+    background-color: #4a90e2;
+    border-radius: 4px;
+    position: absolute;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.car-info {
+    display: none;
+    position: absolute;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    min-width: 220px;
+    left: 100%;
+    top: 0;
+    color: #e0e0e0;
+}
+
+.car:hover .car-info {
+    display: block;
+}
+
+.stats-panel {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+}
+
+.charts-panel {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+}
+
+.chart-container {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 300px !important;
+    background: #2d2d2d;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.zone-stats {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background: #333;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.qr-code {
+    margin-top: 15px;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.car-animation {
+    animation: moveCar 1s ease;
+}
+
+@keyframes moveCar {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.maintenance-panel {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+}
+
+.maintenance-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.control-section {
+    padding: 15px;
+    background: #333;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.maintenance-toggle {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px;
+    background: #404040;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.maintenance-toggle input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.maintenance-toggle label {
+    color: #e0e0e0;
+    flex-grow: 1;
+}
+
+.under-maintenance {
+    background-color: #ff5722 !important;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.under-maintenance::after {
+    content: '🔧';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    z-index: 2;
+}

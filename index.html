@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control de Estacionamiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Control de Estacionamiento - Desarrollado por Eduardo Núñez</h1>
+        <div class="parking-map" id="parkingMap">
+            <!-- Las zonas y calles se generarán dinámicamente con JavaScript -->
+        </div>
+        <div class="maintenance-panel">
+            <h2>Control de Mantenimiento</h2>
+            <div class="maintenance-controls">
+                <div class="control-section">
+                    <h3>Entradas/Salidas</h3>
+                    <div id="gateControls"></div>
+                </div>
+                <div class="control-section">
+                    <h3>Calles</h3>
+                    <div id="streetControls"></div>
+                </div>
+                <div class="control-section">
+                    <h3>Zonas</h3>
+                    <div id="zoneControls"></div>
+                </div>
+            </div>
+        </div>
+        <div class="stats-panel">
+            <div class="general-stats">
+                <h2>Estadísticas Generales</h2>
+                <p>Espacios disponibles: <span id="availableSpots">0</span></p>
+                <p>Vehículos estacionados: <span id="occupiedSpots">0</span></p>
+                <p>Ingresos totales: $<span id="totalRevenue">0.00</span></p>
+            </div>
+            <div class="traffic-stats">
+                <h2>Estado del Tráfico</h2>
+                <div id="trafficStatus"></div>
+            </div>
+            <div class="zone-stats">
+                <h2>Ocupación por Zonas</h2>
+                <div id="zoneStatus"></div>
+            </div>
+        </div>
+    </div>
+    <div class="charts-panel">
+        <div class="chart-container">
+            <h2>Ocupación por Zonas</h2>
+            <canvas id="occupancyChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Ingresos por Zona</h2>
+            <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Niveles de Tráfico</h2>
+            <canvas id="trafficChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
